@@ -14,4 +14,6 @@ public interface VectorAct {
 	public void vectPrint(ArrayList<Integer> vect);
 	
 	public ArrayList<Integer> vectInput();
+	
+	public ArrayList<Integer> vectMul(ArrayList<Integer> a, ArrayList<Integer> b);
 }

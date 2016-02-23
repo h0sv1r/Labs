@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Operations implements VectorAct, MassAct, ScalAct {
-	private final static int N = 10;
+	private final static int N = 3;
 	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 	// заповнити вектор випадковими числами від 1 до 10
@@ -121,31 +121,28 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 	}
 
 	@Override
-	public int scalOutput() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void scalOutput() {
+		System.out.println("a = " + Data.a);
 	}
 
 	@Override
 	public int[][] massInput() {
 		int[][] mass = new int[3][3];
-		String s;
-		String[] s1 = { "1", "1", "1" };
-		for (int i = 0; i < 3; i++) {
+		String[] s;
+		for (int i = 0; i < 3;) {
 			try {
 				System.out.println("Input numbers in order x x x, where x - any number:");
-				s = br.readLine();
-				if (s1.length >= 5) {
-					s1 = s.split(" ");
-				} else {
-					System.out.println("Incorrect input! Array string initialized by 1, 1, 1.");
+				s = br.readLine().split(" ");
+				if (s.length == 3) {
+					for (int j = 0; j < 3; j++) {
+						mass[i][j] = Integer.parseInt(s[j]);
+
+					}
+					i++;
 				}
-				for (int j = 0; j < 3; j++) {
-					mass[i][j] = Integer.parseInt(s1[j]);
-				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} catch (IOException | ArrayIndexOutOfBoundsException e) {
+				System.out.print("Incorrect input! Lets try again!");
+
 			}
 
 		}
@@ -156,25 +153,43 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 	@Override
 	public ArrayList<Integer> vectInput() {
 		ArrayList<Integer> list = new ArrayList<>();
-		String s;
-		String[] s1 = { "1", "1", "1" };
+		String[] s;
 		try {
-			System.out.println("Input numbers in order x x x, where x - any number:");
-			s = br.readLine();
-			if (s1.length >= 5) {
-				s1 = s.split(" ");
-			} else {
-				System.out.println("Incorrect input! Array string initialized by 1, 1, 1.");
+			
+			boolean check = true;
+			while (check) {
+				System.out.println("Input numbers in order x x x, where x - any number:");
+				s = br.readLine().split(" ");
+				if (s.length == 3) {
+					for (int i = 0; i < 3; i++) {
+						list.add(Integer.parseInt(s[i]));
+					}
+					check=false;
+				}
 			}
-			for (int i = 0; i < 3; i++) {
-				list.add(Integer.parseInt(s1[i]));
-			}
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		} catch (IOException | ArrayIndexOutOfBoundsException e) {
+			System.out.print("Incorrect input! Lets try again!");
 		}
 
 		return list;
+	}
+
+	@Override
+	public ArrayList<Integer> vectMul(ArrayList<Integer> A, ArrayList<Integer> B) {
+		ArrayList<Integer> list = new ArrayList<>();
+		for (int i = 0; i < 3; i++) {
+			list.add(A.get(i) * B.get(i));
+		}
+		return list;
+	}
+
+	@Override
+	public int scalSum(ArrayList<Integer> a) {
+		int tmp = 0;
+		for (Integer entry : a) {
+			tmp += entry;
+		}
+		return tmp;
 	}
 
 }

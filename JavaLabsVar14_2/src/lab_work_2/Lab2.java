@@ -13,10 +13,10 @@ public class Lab2 {
 		}
 
 		// Введення векторів B і D
-		System.out.print("Entervector B: ");
+		System.out.print("Enter vector B: ");
 		Data.B = vectOper.vectInput();
 
-		System.out.print("Entervector D: ");
+		System.out.print("Enter vector D: ");
 		Data.C = vectOper.vectInput();
 		Data.semInput.release(); // звільнення семафору введення
 
@@ -28,15 +28,15 @@ public class Lab2 {
 
 		try {
 			tr2.start();
-			// tr3.start();
-			// tr4.start();
+			tr3.start();
+			tr4.start();
 			tr2.join();
-			// tr3.join();
-			// tr4.join();
+			tr3.join();
+			tr4.join();
 		} catch (InterruptedException e) {
 			System.out.println("Thread was interrupted!");
 		}
-
+		
 	}
 
 }
