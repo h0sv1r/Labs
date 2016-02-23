@@ -21,7 +21,7 @@ public class Thr3 implements Runnable {
 
 	@Override
 	public void run() {
-		System.out.println("Thread 2 started!");
+		System.out.println("Thread 3 started!");
 		
 		VectorAct vectOper=new Operations();
 		MassAct massOper=(MassAct)vectOper;
@@ -32,7 +32,7 @@ public class Thr3 implements Runnable {
 		D=massOper.massVectMul(massOper.massSub(MA,MB), vectOper.vectSum(A, B));
 		
 		try {
-			Thread.sleep(1200);
+			Thread.sleep(700);
 		} catch (InterruptedException e) {
 			System.out.println("Sleep of Thr2 was interrupted!");
 		}

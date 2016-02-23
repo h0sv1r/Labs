@@ -10,7 +10,9 @@ public class Lab1 {
 		Thread tr3 = new Thread(new Thr3(), "Thread 3");
 		try {
 			tr1.start();
+			Thread.sleep(100);
 			tr2.start();
+			Thread.sleep(100);
 			tr3.start();
 			tr1.join();
 			tr2.join();

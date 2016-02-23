@@ -22,7 +22,7 @@ public class Thr2 implements Runnable {
 		
 		MC=oper.massSort(oper.massAdd(MA, MB));
 		try {
-			Thread.sleep(1100);
+			Thread.sleep(600);
 		} catch (InterruptedException e) {
 			System.out.println("Sleep of Thr2 was interrupted!");
 		}

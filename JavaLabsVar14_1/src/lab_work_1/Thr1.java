@@ -19,7 +19,7 @@ public class Thr1 implements Runnable {
 		oper.vectFillUp(D);
 
 		try {
-			Thread.sleep(1000);
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			System.out.println("Sleep of Thr2 was interrupted!");
 		}
