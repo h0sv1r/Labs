@@ -37,7 +37,7 @@ public class Thr3 implements Runnable {
 			System.out.println("Sleep of Thr2 was interrupted!");
 		}
 		
-		System.out.println("Task 3:\nD = ");
+		System.out.print("Task 3:\nD = ");
 		vectOper.vectPrint(D);
 		System.out.print("\n\n");
 	}

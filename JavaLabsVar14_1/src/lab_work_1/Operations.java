@@ -6,19 +6,19 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Operations implements VectorAct, MassAct {
-	private final static int N = 10;
+	private final static int N = 3;
 
-	// заповнити вектор випадковими числами в≥д 1 до 10
+	// заповнити вектор випадковими числами в≥д 1 до 3
 	public void vectFillUp(ArrayList<Integer> list) {
 		for (int i = 0; i < N; i++) {
-			list.add((int) (Math.random() * 10 + 1));
+			list.add((int) (Math.random() * 3 + 1));
 		}
 	}
 
 	// сума вектор≥в
 	public ArrayList<Integer> vectSum(ArrayList<Integer> a, ArrayList<Integer> b) {
 		ArrayList<Integer> list = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < N; i++) {
 			list.add(a.get(i) + b.get(i));
 		}
 		return list;
@@ -27,7 +27,7 @@ public class Operations implements VectorAct, MassAct {
 	// р≥зниц€ вектор≥в
 	public ArrayList<Integer> vectSub(ArrayList<Integer> a, ArrayList<Integer> b) {
 		ArrayList<Integer> list = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < N; i++) {
 			list.add(a.get(i) - b.get(i));
 		}
 		return list;
@@ -84,9 +84,11 @@ public class Operations implements VectorAct, MassAct {
 	@Override
 	public void massPrint(int[][] mass) {
 		for (int i = 0; i < N; i++) {
+			System.out.print("{");
 			for (int j = 0; j < N; j++) {
 				System.out.print(mass[i][j] + " ");
 			}
+			System.out.print("}");
 			System.out.println();
 		}
 	}
