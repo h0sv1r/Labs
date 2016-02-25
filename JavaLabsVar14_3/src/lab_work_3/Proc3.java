@@ -8,7 +8,7 @@ public class Proc3 implements Runnable {
 		MassAct massOper = new Operations();
 		Data.MZ = massOper.massInput();
 
-
+		
 		// виведення результату
 		System.out.print("a = " + Data.a);
 

@@ -13,14 +13,14 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 	// заповнити вектор випадковими числами від 1 до 10
-	public void vectFillUp(ArrayList<Integer> list) {
+	public synchronized void vectFillUp(ArrayList<Integer> list) {
 		for (int i = 0; i < N; i++) {
 			list.add((int) (Math.random() * 10 + 1));
 		}
 	}
 
 	// сума векторів
-	public ArrayList<Integer> vectSum(ArrayList<Integer> a, ArrayList<Integer> b) {
+	public synchronized ArrayList<Integer> vectSum(ArrayList<Integer> a, ArrayList<Integer> b) {
 		ArrayList<Integer> list = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
 			list.add(a.get(i) + b.get(i));
@@ -29,7 +29,7 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 	}
 
 	// різниця векторів
-	public ArrayList<Integer> vectSub(ArrayList<Integer> a, ArrayList<Integer> b) {
+	public synchronized ArrayList<Integer> vectSub(ArrayList<Integer> a, ArrayList<Integer> b) {
 		ArrayList<Integer> list = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
 			list.add(a.get(i) - b.get(i));
@@ -38,7 +38,7 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 	}
 
 	// виконує сортування вектора
-	public ArrayList<Integer> vectSort(ArrayList<Integer> a) {
+	public synchronized ArrayList<Integer> vectSort(ArrayList<Integer> a) {
 		Collections.sort(a, new Comparator<Integer>() {
 			public int compare(Integer o1, Integer o2) {
 				return o1.compareTo(o2);
@@ -49,14 +49,14 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 	}
 
 	// виводить вміст вектора на консоль
-	public void vectPrint(ArrayList<Integer> vect) {
+	public synchronized void vectPrint(ArrayList<Integer> vect) {
 		for (Integer i : vect) {
 			System.out.print(i + " ");
 		}
 	}
 
 	@Override
-	public int[][] massAdd(int[][] mass1, int[][] mass2) {
+	public synchronized int[][] massAdd(int[][] mass1, int[][] mass2) {
 		int[][] mass = new int[N][N];
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
@@ -68,7 +68,7 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 	}
 
 	@Override
-	public int[][] massSort(int[][] mass) {
+	public synchronized int[][] massSort(int[][] mass) {
 
 		int[] tmpMass = new int[N];
 		int[][] tmpMass2 = new int[N][N];
@@ -86,7 +86,7 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 	}
 
 	@Override
-	public void massPrint(int[][] mass) {
+	public synchronized void massPrint(int[][] mass) {
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
 				System.out.print(mass[i][j] + " ");
@@ -95,7 +95,7 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 		}
 	}
 
-	public ArrayList<Integer> massVectMul(int MC[][], ArrayList<Integer> D) {
+	public synchronized ArrayList<Integer> massVectMul(int MC[][], ArrayList<Integer> D) {
 		ArrayList<Integer> list = new ArrayList<>();
 		int tmp;
 		for (int i = 0; i < N; i++) {
@@ -109,7 +109,7 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 	}
 
 	@Override
-	public int[][] massSub(int[][] mass1, int[][] mass2) {
+	public synchronized int[][] massSub(int[][] mass1, int[][] mass2) {
 		int[][] tmpMass = new int[N][N];
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
@@ -121,12 +121,12 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 	}
 
 	@Override
-	public void scalOutput() {
+	public synchronized void scalOutput() {
 		System.out.println("a = " + Data.a);
 	}
 
 	@Override
-	public int[][] massInput() {
+	public synchronized int[][] massInput() {
 		int[][] mass = new int[3][3];
 		String[] s;
 		for (int i = 0; i < 3;) {
@@ -150,8 +150,14 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 		return mass;
 	}
 
+	
+	/**
+	 * Метод зчитує стандартний системний ввід, приймає строку, 
+	 * розбиває її на три частини пробілами, сканує цілочислові 
+	 * значення та ініціалізує ними вектор
+	 */
 	@Override
-	public ArrayList<Integer> vectInput() {
+	public synchronized ArrayList<Integer> vectInput() {
 		ArrayList<Integer> list = new ArrayList<>();
 		String[] s;
 		try {
@@ -173,9 +179,12 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 
 		return list;
 	}
-
+	
+	/**
+	 * Перемножує вектори
+	 */
 	@Override
-	public ArrayList<Integer> vectMul(ArrayList<Integer> A, ArrayList<Integer> B) {
+	public synchronized ArrayList<Integer> vectMul(ArrayList<Integer> A, ArrayList<Integer> B) {
 		ArrayList<Integer> list = new ArrayList<>();
 		for (int i = 0; i < 3; i++) {
 			list.add(A.get(i) * B.get(i));
@@ -183,13 +192,17 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 		return list;
 	}
 
+	/**
+	 * Обчислює скалярну суму
+	 */
 	@Override
-	public int scalSum(ArrayList<Integer> a) {
+	public synchronized int scalSum(ArrayList<Integer> a) {
 		int tmp = 0;
 		for (Integer entry : a) {
 			tmp += entry;
 		}
 		return tmp;
+		
 	}
 
 }

@@ -10,7 +10,7 @@ public class Proc4 implements Runnable {
 		ScalAct scalOper = (ScalAct)vectOper;
 
 		Data.a=scalOper.scalSum(vectOper.vectMul(Data.B,massOper.massVectMul(Data.MZ, Data.C)));
-	
+		
 	}
 
 }
