@@ -17,4 +17,3 @@ public class Proc4 implements Runnable {
 
 
 
-//a =  (B* (C * MZ) )

@@ -7,7 +7,6 @@ public class Lab3 {
 		VectorAct vectOper = new Operations();
 
 
-		// Введення векторів B і D
 		System.out.print("Enter vector B: ");
 		Data.B = vectOper.vectInput();
 

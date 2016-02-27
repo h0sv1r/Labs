@@ -7,32 +7,29 @@ public class Lab2 {
 		VectorAct vectOper = new Operations();
 
 		try {
-			Data.semInput.acquire(); // захолення семафору введення
+			Data.semInput.acquire(); // Р·Р°С…РѕР»РµРЅРЅСЏ СЃРµРјР°С„РѕСЂСѓ РІРІРµРґРµРЅРЅСЏ
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 
-		// Введення векторів B і D
+		// Р’РІРµРґРµРЅРЅСЏ РІРµРєС‚РѕСЂС–РІ B С– D
 		System.out.print("Enter vector B: ");
 		Data.B = vectOper.vectInput();
 
 		System.out.print("Enter vector D: ");
 		Data.C = vectOper.vectInput();
-		Data.semInput.release(); // звільнення семафору введення
+		Data.semInput.release(); // Р·РІС–Р»СЊРЅРµРЅРЅСЏ СЃРµРјР°С„РѕСЂСѓ РІРІРµРґРµРЅРЅСЏ
 
-		Data.semWait.release(); // дозвіл виконання арифм. операцій
+		Data.semWait.release(); // РґРѕР·РІС–Р» РІРёРєРѕРЅР°РЅРЅСЏ Р°СЂРёС„Рј. РѕРїРµСЂР°С†С–Р№
 
 		Thread tr2 = new Thread(new Proc2());
-		Thread tr3 = new Thread(new Proc3());
-		Thread tr4 = new Thread(new Proc4());
+		
 
 		try {
 			tr2.start();
-			tr3.start();
-			tr4.start();
+			
 			tr2.join();
-			tr3.join();
-			tr4.join();
+			
 		} catch (InterruptedException e) {
 			System.out.println("Thread was interrupted!");
 		}

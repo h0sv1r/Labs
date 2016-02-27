@@ -29,6 +29,7 @@ public class Thr3 implements Runnable {
 		vectOper.vectFillUp(A);
 		vectOper.vectFillUp(B);
 		
+		//D = (A + B)*(MA - MB)
 		D=massOper.massVectMul(massOper.massSub(MA,MB), vectOper.vectSum(A, B));
 		
 		try {

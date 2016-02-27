@@ -12,20 +12,20 @@ public class Thr1 implements Runnable {
 	public void run() {
 		System.out.println("Thread 1 started!");
 		VectorAct oper = new Operations();
-		// заповнити вектори даними
+		// Р·Р°РїРѕРІРЅРёС‚Рё РІРµРєС‚РѕСЂРё РґР°РЅРёРјРё
 		oper.vectFillUp(A);
 		oper.vectFillUp(B);
 		oper.vectFillUp(C);
-		oper.vectFillUp(D);
 
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			System.out.println("Sleep of Thr2 was interrupted!");
 		}
-
+		
+		//D = SORT(A + B) - C
 		D = oper.vectSub(oper.vectSort(oper.vectSum(A, B)), C);
-		// вивід на консоль
+		// РІРёРІС–Рґ РЅР° РєРѕРЅСЃРѕР»СЊ
 		System.out.print("Task 1:\nD = ");
 		oper.vectPrint(D);
 		System.out.print("\n\n");

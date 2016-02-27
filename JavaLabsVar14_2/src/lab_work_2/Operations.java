@@ -12,32 +12,40 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 	private final static int N = 3;
 	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-	// ��������� ������ ����������� ������� �� 1 �� 10
+	/**
+	 * Заповнює вектор випадковими значеннями від 1 до 3
+	 */
 	public void vectFillUp(ArrayList<Integer> list) {
 		for (int i = 0; i < N; i++) {
-			list.add((int) (Math.random() * 10 + 1));
+			list.add((int) (Math.random() * 3 + 1));
 		}
 	}
 
-	// ���� �������
+	/**
+	 * Сума векторів
+	 */
 	public ArrayList<Integer> vectSum(ArrayList<Integer> a, ArrayList<Integer> b) {
 		ArrayList<Integer> list = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < N; i++) {
 			list.add(a.get(i) + b.get(i));
 		}
 		return list;
 	}
 
-	// ������ �������
+	/**
+	 * Різниця векторів
+	 */
 	public ArrayList<Integer> vectSub(ArrayList<Integer> a, ArrayList<Integer> b) {
 		ArrayList<Integer> list = new ArrayList<>();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < N; i++) {
 			list.add(a.get(i) - b.get(i));
 		}
 		return list;
 	}
 
-	// ������ ���������� �������
+	/**
+	 * Сортування вектора
+	 */
 	public ArrayList<Integer> vectSort(ArrayList<Integer> a) {
 		Collections.sort(a, new Comparator<Integer>() {
 			public int compare(Integer o1, Integer o2) {
@@ -48,13 +56,18 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 
 	}
 
-	// �������� ���� ������� �� �������
+	/**
+	 * Вивід вектора на стандартну консоль виводу
+	 */
 	public void vectPrint(ArrayList<Integer> vect) {
 		for (Integer i : vect) {
 			System.out.print(i + " ");
 		}
 	}
 
+	/**
+	 * Сума двох матриць
+	 */
 	@Override
 	public int[][] massAdd(int[][] mass1, int[][] mass2) {
 		int[][] mass = new int[N][N];
@@ -67,6 +80,9 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 		return mass;
 	}
 
+	/**
+	 * Сортування матриці по рядках
+	 */
 	@Override
 	public int[][] massSort(int[][] mass) {
 
@@ -85,16 +101,24 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 		return tmpMass2;
 	}
 
+	/**
+	 * Вивід масиву на стандартну консоль виводу
+	 */
 	@Override
 	public void massPrint(int[][] mass) {
 		for (int i = 0; i < N; i++) {
+			System.out.print("{");
 			for (int j = 0; j < N; j++) {
 				System.out.print(mass[i][j] + " ");
 			}
+			System.out.print("}");
 			System.out.println();
 		}
 	}
 
+	/**
+	 * Добуток матриці на вектор
+	 */
 	public ArrayList<Integer> massVectMul(int MC[][], ArrayList<Integer> D) {
 		ArrayList<Integer> list = new ArrayList<>();
 		int tmp;
@@ -108,6 +132,9 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 		return list;
 	}
 
+	/**
+	 * Різниця матриць
+	 */
 	@Override
 	public int[][] massSub(int[][] mass1, int[][] mass2) {
 		int[][] tmpMass = new int[N][N];
@@ -119,19 +146,25 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 		return tmpMass;
 
 	}
-
+	
+	/**
+	 * Вивід скалярної величини на стандартну консоль виводу
+	 */
 	@Override
 	public void scalOutput() {
 		System.out.println("a = " + Data.a);
 	}
 
+	/**
+	 * Зчитування значень масива зі стандартної консолі вводу
+	 */
 	@Override
 	public int[][] massInput() {
 		int[][] mass = new int[3][3];
 		String[] s;
 		for (int i = 0; i < 3;) {
 			try {
-				System.out.println("Input numbers in order x x x, where x - any number:");
+				System.out.println("Input mass row numbers in order x x x, where x - any number:");
 				s = br.readLine().split(" ");
 				if (s.length == 3) {
 					for (int j = 0; j < 3; j++) {
@@ -139,10 +172,11 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 
 					}
 					i++;
+				}else{
+					System.out.println("Incorrect input");
 				}
 			} catch (IOException | ArrayIndexOutOfBoundsException e) {
 				System.out.print("Incorrect input! Lets try again!");
-
 			}
 
 		}
@@ -150,6 +184,9 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 		return mass;
 	}
 
+	/**
+	 * Зчитування значень вектора зі стандартної консолі вводу
+	 */
 	@Override
 	public ArrayList<Integer> vectInput() {
 		ArrayList<Integer> list = new ArrayList<>();
@@ -165,6 +202,8 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 						list.add(Integer.parseInt(s[i]));
 					}
 					check=false;
+				}else{
+					System.out.println("Incorrect input");
 				}
 			}
 		} catch (IOException | ArrayIndexOutOfBoundsException e) {
@@ -173,7 +212,10 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 
 		return list;
 	}
-
+	
+	/**
+	 * Множення векторів
+	 */
 	@Override
 	public ArrayList<Integer> vectMul(ArrayList<Integer> A, ArrayList<Integer> B) {
 		ArrayList<Integer> list = new ArrayList<>();
@@ -183,6 +225,9 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 		return list;
 	}
 
+	/**
+	 * Скалярна сума
+	 */
 	@Override
 	public int scalSum(ArrayList<Integer> a) {
 		int tmp = 0;

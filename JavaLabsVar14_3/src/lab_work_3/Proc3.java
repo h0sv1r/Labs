@@ -18,7 +18,6 @@ public class Proc3 implements Runnable {
 			e.printStackTrace();
 		}
 
-		// виведення результату
 		System.out.print("a = " + Data.a);
 
 	}

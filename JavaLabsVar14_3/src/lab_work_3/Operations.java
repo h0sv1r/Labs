@@ -12,14 +12,12 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 	private final static int N = 3;
 	private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-	// заповнити вектор випадковими числами в≥д 1 до 10
 	public void vectFillUp(ArrayList<Integer> list) {
 		for (int i = 0; i < N; i++) {
 			list.add((int) (Math.random() * 10 + 1));
 		}
 	}
 
-	// сума вектор≥в
 	public ArrayList<Integer> vectSum(ArrayList<Integer> a, ArrayList<Integer> b) {
 		ArrayList<Integer> list = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
@@ -28,7 +26,6 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 		return list;
 	}
 
-	// р≥зниц€ вектор≥в
 	public ArrayList<Integer> vectSub(ArrayList<Integer> a, ArrayList<Integer> b) {
 		ArrayList<Integer> list = new ArrayList<>();
 		for (int i = 0; i < 10; i++) {
@@ -37,7 +34,6 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 		return list;
 	}
 
-	// виконуЇ сортуванн€ вектора
 	public ArrayList<Integer> vectSort(ArrayList<Integer> a) {
 		Collections.sort(a, new Comparator<Integer>() {
 			public int compare(Integer o1, Integer o2) {
@@ -48,7 +44,6 @@ public class Operations implements VectorAct, MassAct, ScalAct {
 
 	}
 
-	// виводить вм≥ст вектора на консоль
 	public void vectPrint(ArrayList<Integer> vect) {
 		for (Integer i : vect) {
 			System.out.print(i + " ");

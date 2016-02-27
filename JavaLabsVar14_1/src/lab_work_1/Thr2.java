@@ -20,6 +20,7 @@ public class Thr2 implements Runnable {
 		
 		MassAct oper = new Operations();
 		
+		// MC = SORT(MA + MB)
 		MC=oper.massSort(oper.massAdd(MA, MB));
 		try {
 			Thread.sleep(600);
