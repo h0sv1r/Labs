@@ -22,7 +22,6 @@ public class Proc3 implements Runnable {
 			e.printStackTrace();
 		}
 
-
 		scalOper.scalOutput();
 	}
 

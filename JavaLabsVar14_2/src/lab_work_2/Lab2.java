@@ -5,6 +5,7 @@ public class Lab2 {
 	public static void main(String[] args) throws InterruptedException {
 
 		VectorAct vectOper = new Operations();
+		Thread tr2 = new Thread(new Proc2());
 
 		try {
 			Data.semInput.acquire(); // захолення семафору введення
@@ -18,11 +19,11 @@ public class Lab2 {
 
 		System.out.print("Enter vector D: ");
 		Data.C = vectOper.vectInput();
+		
 		Data.semInput.release(); // звільнення семафору введення
-
 		Data.semWait.release(); // дозвіл виконання арифм. операцій
 
-		Thread tr2 = new Thread(new Proc2());
+		
 		
 
 		try {
